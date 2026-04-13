@@ -1,0 +1,38 @@
+{
+  "name": "tiny-agent",
+  "version": "0.1.0",
+  "description": "A production-grade Agent framework built from scratch in TypeScript",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run --exclude '**/integration*'",
+    "test:watch": "vitest --exclude '**/integration*'",
+    "test:integration": "vitest run integration",
+    "test:all": "vitest run",
+    "lint": "tsc --noEmit",
+    "example": "tsx"
+  },
+  "keywords": [
+    "agent",
+    "llm",
+    "ai",
+    "mcp",
+    "rag",
+    "multi-agent"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "zod": "^3.24.0"
+  }
+}
