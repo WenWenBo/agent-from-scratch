@@ -10,3 +10,4 @@ export type { AgentOptions, AgentResult, AgentEvent } from './agent.js';
 export * from './memory/index.js';
 export * from './rag/index.js';
 export * from './streaming/index.js';
+export * from './multi-agent/index.js';
