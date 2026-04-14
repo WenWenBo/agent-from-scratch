@@ -140,7 +140,7 @@ function makeAnthropicStreamToolUseEvents() {
 
 describe('AnthropicProvider', () => {
   let provider: AnthropicProvider;
-  let fetchSpy: ReturnType<typeof vi.spyOn>;
+  let fetchSpy: any;
 
   beforeEach(() => {
     provider = new AnthropicProvider({

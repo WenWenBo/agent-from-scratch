@@ -155,7 +155,7 @@ function makeStreamToolCallChunks() {
 
 describe('OpenAIProvider', () => {
   let provider: OpenAIProvider;
-  let fetchSpy: ReturnType<typeof vi.spyOn>;
+  let fetchSpy: any;
 
   beforeEach(() => {
     provider = new OpenAIProvider({
