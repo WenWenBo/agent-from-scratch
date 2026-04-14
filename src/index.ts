@@ -11,3 +11,5 @@ export * from './memory/index.js';
 export * from './rag/index.js';
 export * from './streaming/index.js';
 export * from './multi-agent/index.js';
+export * from './mcp/index.js';
+export * from './guardrails/index.js';

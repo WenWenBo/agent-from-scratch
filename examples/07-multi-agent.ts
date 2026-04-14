@@ -1,10 +1,11 @@
 /**
  * 示例：Multi-Agent 系统
  *
- * 展示三种协作模式：
+ * 展示四种协作模式：
  * 1. SequentialPipeline -- 研究 → 撰写 → 审校
  * 2. ParallelFanOut -- 多角度分析
  * 3. Orchestrator -- 智能路由
+ * 4. Supervisor -- 带质量审查的迭代优化
  */
 
 import 'dotenv/config';
@@ -14,6 +15,7 @@ import {
   SequentialPipeline,
   ParallelFanOut,
   Orchestrator,
+  Supervisor,
 } from '../src/index.js';
 
 const provider = new OpenAIProvider({
@@ -141,6 +143,49 @@ async function main() {
     );
     console.log(`A (by ${result.agentName}): ${result.content.slice(0, 150)}...\n`);
   }
+
+  // ========================================================
+  // 场景 4: Supervisor -- 带质量审查的迭代优化
+  // ========================================================
+  console.log('\n=== 场景 4: Supervisor（质量审查循环） ===\n');
+
+  const draftWriter = new AgentWrapper({
+    name: 'draft-writer',
+    description: 'Writes initial drafts quickly',
+    provider, model,
+    systemPrompt: 'You are a fast draft writer. Write a concise first draft based on the task. If you receive feedback, improve your output accordingly.',
+  });
+
+  const detailWriter = new AgentWrapper({
+    name: 'detail-writer',
+    description: 'Writes detailed, well-researched content',
+    provider, model,
+    systemPrompt: 'You are a detail-oriented writer. Produce thorough, well-structured content with specific examples. If you receive feedback, address each point.',
+  });
+
+  const supervisor = new Supervisor({
+    name: 'editor-in-chief',
+    description: 'Reviews and iterates on written content',
+    provider, model,
+    agents: [draftWriter, detailWriter],
+    maxRounds: 3,
+  });
+
+  const supResult = await supervisor.execute(
+    { content: 'Write a brief introduction to TypeScript for JavaScript developers' },
+    (event) => {
+      if (event.type === 'task_assigned') {
+        console.log(`  [Assign] → ${event.agentName}`);
+      }
+      if (event.type === 'supervisor_review') {
+        console.log(`  [Review Round ${event.round}] ${event.verdict}: ${event.feedback.slice(0, 80)}`);
+      }
+      if (event.type === 'supervisor_done') {
+        console.log(`  [Done] ${event.totalRounds} round(s), final agent: ${event.finalAgent}`);
+      }
+    }
+  );
+  console.log(`\n结果 (approved: ${supResult.metadata?.approved}):\n${supResult.content.slice(0, 300)}...\n`);
 }
 
 main().catch(console.error);

@@ -48,7 +48,9 @@ export type MultiAgentEvent =
   | { type: 'orchestrator_thinking'; content: string }
   | { type: 'pipeline_step'; step: number; agentName: string }
   | { type: 'parallel_start'; agents: string[] }
-  | { type: 'parallel_done'; results: Array<{ agentName: string; success: boolean }> };
+  | { type: 'parallel_done'; results: Array<{ agentName: string; success: boolean }> }
+  | { type: 'supervisor_review'; round: number; verdict: 'approve' | 'revise' | 'reassign'; feedback: string }
+  | { type: 'supervisor_done'; totalRounds: number; finalAgent: string };
 
 /**
  * BaseAgent -- 所有可执行单元的统一接口

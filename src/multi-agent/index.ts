@@ -20,3 +20,6 @@ export type { ParallelFanOutOptions, AggregationStrategy } from './parallel.js';
 
 export { Orchestrator } from './orchestrator.js';
 export type { OrchestratorOptions } from './orchestrator.js';
+
+export { Supervisor } from './supervisor.js';
+export type { SupervisorOptions } from './supervisor.js';
