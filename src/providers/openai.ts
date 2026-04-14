@@ -119,8 +119,15 @@ export class OpenAIProvider extends LLMProvider {
       throw new Error(`OpenAI API error (${response.status}): ${error}`);
     }
 
-    const data = (await response.json()) as OpenAIChatResponse;
-    return this.parseChatResponse(data);
+    const data = (await response.json()) as Record<string, any>;
+
+    // 兼容某些代理/网关返回 200 但 body 中含错误信息的情况
+    if (!data.choices) {
+      const msg = data.message ?? data.error?.message ?? JSON.stringify(data);
+      throw new Error(`OpenAI API returned invalid response: ${msg}`);
+    }
+
+    return this.parseChatResponse(data as OpenAIChatResponse);
   }
 
   async *stream(request: ChatRequest): AsyncIterable<StreamChunk> {
@@ -130,6 +137,13 @@ export class OpenAIProvider extends LLMProvider {
     if (!response.ok) {
       const error = await response.text();
       throw new Error(`OpenAI API error (${response.status}): ${error}`);
+    }
+
+    // 某些代理/网关可能返回 200 + JSON 错误体而非 SSE 流
+    const contentType = response.headers.get('content-type') ?? '';
+    if (!contentType.includes('text/event-stream') && !response.body) {
+      const text = await response.text();
+      throw new Error(`OpenAI API returned non-stream response: ${text}`);
     }
 
     yield* this.parseSSEStream(response);
