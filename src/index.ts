@@ -13,3 +13,4 @@ export * from './streaming/index.js';
 export * from './multi-agent/index.js';
 export * from './mcp/index.js';
 export * from './guardrails/index.js';
+export * from './observability/index.js';
