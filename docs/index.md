@@ -1,8 +1,28 @@
-# TinyAgent: 从零手写生产级 Agent 框架
+---
+layout: home
+hero:
+  name: TinyAgent
+  text: 从零手写生产级 Agent 框架
+  tagline: 面向有 TypeScript/前端经验的开发者，13 章 + 3 个实战项目，完整掌握 AI Agent 开发
+  actions:
+    - theme: brand
+      text: 开始阅读
+      link: /chapter-01-llm-provider
+    - theme: alt
+      text: GitHub
+      link: https://github.com
+features:
+  - title: 渐进式构建
+    details: 从 LLM 调用到 Multi-Agent，每章在前一章基础上扩展，循序渐进
+  - title: 纯 TypeScript
+    details: 零 SDK 依赖，手写 HTTP 调用、向量计算、SSE 解析，理解底层原理
+  - title: 生产级实践
+    details: 可观测性、评估体系、安全护栏、成本优化、技能系统，面向真实场景
+  - title: 3 个实战项目
+    details: 智能文档助手、代码审查 Agent、客服智能体系统，学以致用
+---
 
-> 面向有 TypeScript/前端经验的开发者，从零构建一个功能完整的 AI Agent 框架。
-
-## 教程导航
+# 教程导航
 
 本教程采用**渐进式构建**策略，分为 4 个阶段、13 个章节 + 3 个实战项目。每章在前一章代码基础上扩展，最终形成一个名为 **TinyAgent** 的生产级框架。
 
@@ -19,7 +39,7 @@
 | 章节 | 标题 | 核心内容 |
 |------|------|----------|
 | [Chapter 04](./chapter-04-memory-system.md) | Agent 的记忆 -- Memory 系统 | 短期/长期/工作记忆、Token 截断、摘要压缩 |
-| [Chapter 05](./chapter-05-rag-integration.md) | 知识增强 -- RAG 与 Agent 结合 | 纯 TS 向量计算、BM25、混合检索、自反思检索 |
+| [Chapter 05](./chapter-05-rag.md) | 知识增强 -- RAG 与 Agent 结合 | 纯 TS 向量计算、BM25、混合检索、自反思检索 |
 | [Chapter 06](./chapter-06-streaming.md) | 实时响应 -- 流式输出与 UI | SSE、事件流、终端/Web Chat UI |
 
 **实战项目 A**: [智能文档助手](./project-a-doc-assistant.md)
@@ -29,7 +49,7 @@
 | 章节 | 标题 | 核心内容 |
 |------|------|----------|
 | [Chapter 07](./chapter-07-multi-agent.md) | 团队协作 -- Multi-Agent 系统 | Supervisor/Swarm 模式、Handoff、状态图引擎 |
-| [Chapter 08](./chapter-08-mcp-protocol.md) | 标准化连接 -- MCP 协议支持 | MCP Client/Server、Stdio/HTTP 传输层 |
+| [Chapter 08](./chapter-08-mcp.md) | 标准化连接 -- MCP 协议支持 | MCP Client/Server、Stdio/HTTP 传输层 |
 | [Chapter 09](./chapter-09-guardrails.md) | 安全第一 -- 护栏与权限系统 | Prompt 注入防御、工具权限、Human-in-the-loop |
 
 **实战项目 B**: [自动化代码审查 Agent](./project-b-code-reviewer.md)

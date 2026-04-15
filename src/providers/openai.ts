@@ -62,6 +62,8 @@ interface OpenAIChatResponse {
       role: string;
       content: string | null;
       tool_calls?: OpenAIToolCall[];
+      /** 推理模型（o1/o3/kimi-k2.5 等）的思考过程 */
+      reasoning?: string | null;
     };
     finish_reason: string;
   }>;
@@ -106,7 +108,7 @@ export class OpenAIProvider extends LLMProvider {
     super({
       apiKey: options?.apiKey ?? process.env.OPENAI_API_KEY ?? '',
       baseUrl: options?.baseUrl ?? process.env.OPENAI_BASE_URL ?? 'https://api.openai.com/v1',
-      defaultModel: options?.defaultModel ?? 'gpt-4o',
+      defaultModel: options?.defaultModel ?? process.env.OPENAI_MODEL ?? 'gpt-4o',
     });
   }
 
@@ -396,7 +398,7 @@ export class OpenAIProvider extends LLMProvider {
    * 参考: https://platform.openai.com/docs/api-reference/chat/create
    */
   private useMaxCompletionTokens(model: string): boolean {
-    const newParamModels = ['o1', 'o3', 'o4', 'gpt-5', 'chatgpt-4o-latest'];
+    const newParamModels = ['o1', 'o3', 'o4', 'gpt-5', 'chatgpt-4o-latest', 'kimi-k2'];
     return newParamModels.some((prefix) => model.startsWith(prefix));
   }
 }

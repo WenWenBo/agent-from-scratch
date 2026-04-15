@@ -14,7 +14,10 @@
     "test:integration": "vitest run integration",
     "test:all": "vitest run",
     "lint": "tsc --noEmit",
-    "example": "tsx"
+    "example": "tsx",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "keywords": [
     "agent",
@@ -27,8 +30,11 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^25.6.0",
+    "mermaid": "^11.14.0",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-mermaid": "^2.0.17",
     "vitest": "^3.1.0"
   },
   "dependencies": {
