@@ -4,7 +4,7 @@
 
 ## 教程导航
 
-本教程采用**渐进式构建**策略，分为 4 个阶段、12 个章节 + 3 个实战项目。每章在前一章代码基础上扩展，最终形成一个名为 **TinyAgent** 的生产级框架。
+本教程采用**渐进式构建**策略，分为 4 个阶段、13 个章节 + 3 个实战项目。每章在前一章代码基础上扩展，最终形成一个名为 **TinyAgent** 的生产级框架。
 
 ### Stage 1: 基础 -- 让 Agent 跑起来
 
@@ -41,6 +41,7 @@
 | [Chapter 10](./chapter-10-observability.md) | 看得见的 Agent -- 可观测性系统 | Trace/Span、OpenTelemetry、Trace Viewer |
 | [Chapter 11](./chapter-11-evaluation.md) | 衡量 Agent 好坏 -- 评估体系 | LLM-as-a-Judge 自举评估、Golden Dataset、回归测试 |
 | [Chapter 12](./chapter-12-optimization.md) | 性能与成本 -- 生产环境优化 | 语义缓存、模型路由、优雅降级、基准测试 |
+| [Chapter 13](./chapter-13-skills.md) | 可插拔能力 -- 技能系统 | 渐进式披露、Caps 约束、Prompt 模板、文件加载 |
 
 **实战项目 C**: [客服智能体系统](./project-c-customer-service.md)
 

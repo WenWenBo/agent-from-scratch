@@ -1,0 +1,16 @@
+{
+  "name": "code-review",
+  "description": "自动代码审查技能：分析代码质量、安全性和风格问题",
+  "version": "1.0.0",
+  "tags": ["code", "review", "quality"],
+  "triggers": ["review", "审查", "code review", "检查代码"],
+  "allowedTools": ["read_file", "search", "count_lines"],
+  "caps": {
+    "maxTokens": 4096,
+    "temperature": 0.1
+  },
+  "promptVariables": {
+    "language": "TypeScript",
+    "severity_levels": "critical, warning, info"
+  }
+}
