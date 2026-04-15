@@ -275,7 +275,7 @@ this.outputGuardrail.add(new PIIDetector({
 const guardResult = await this.outputGuardrail.run(result.content, 'output');
 if (!guardResult.passed) {
   finalContent = piiDetector.mask(result.content);
-  // "sk-1234567890abcdef" → "sk-[REDACTED]"
+  // "DEMO_API_KEY_REDACTED" → "[REDACTED]"
 }
 ```
 

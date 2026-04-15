@@ -15,7 +15,7 @@ export function processData(data: any) {
 }
 
 // SECURITY: 硬编码密钥
-const API_KEY = "sk-1234567890abcdef";
+const API_KEY = "DEMO_API_KEY_REDACTED";
 
 export async function fetchData(endpoint: string) {
   const response = await fetch(endpoint, {

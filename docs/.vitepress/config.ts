@@ -83,5 +83,11 @@ export default withMermaid(defineConfig({
     ],
   },
 
+  vite: {
+    optimizeDeps: {
+      include: ['mermaid', 'dayjs'],
+    },
+  },
+
   mermaid: {},
 }));

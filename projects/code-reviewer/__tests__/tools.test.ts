@@ -32,7 +32,7 @@ export function divide(a: number, b: number): number {
   return a / b;
 }
 
-const API_KEY = "sk-secret123456789012";
+const API_KEY = "DEMO_API_KEY_REDACTED";
 
 export function process(data: any) {
   console.log(data);
